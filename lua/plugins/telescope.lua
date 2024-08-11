@@ -86,7 +86,7 @@ return {
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "[G]it [C]ommits" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "[G]it [S]tatus" },
       -- search
-      { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "[S]earch [R]egisters" },
+      { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "[S]earch registers" },
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "[S]earch [A]uto Commands" },
       { "<leader>sb", "<cmd>Telescope builtin<cr>", desc = "[S]earch [B]uiltin" },
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "[S]earch [C]ommand History" },
@@ -105,7 +105,6 @@ return {
       { '<leader>sw', '<cmd>Telescope grep_string<cr>', desc = '[S]earch current [W]ord' },
       { '<leader>sg', '<cmd>Telescope live_grep<cr>', desc = '[S]earch by [G]rep' },
       { '<leader>sd', '<cmd>Telescope diagnostics<cr>', desc = '[S]earch [D]iagnostics' },
-      { '<leader>sr', '<cmd>Telescope resume<cr>', desc = '[S]earch [R]esume' },
       { '<leader>s.', '<cmd>Telescope oldfiles<cr>', desc = '[S]earch Recent Files ("." for repeat)' },
       { '<leader>sW', '<cmd>Telescope grep_string<cr>', mode = "v", desc = '[S]earch selected [W]ords' },
       -- FIXME: lsp config
