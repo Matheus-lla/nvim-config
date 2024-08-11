@@ -87,12 +87,12 @@ opt.confirm = true -- Confirm to save changes before exiting modified buffer
 
 -- Fold options
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+    foldopen = "",
+    foldclose = "",
+    fold = " ",
+    foldsep = " ",
+    diff = "╱",
+    eob = " ",
 }
 opt.foldlevel = 99
 
