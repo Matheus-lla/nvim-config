@@ -107,7 +107,7 @@ return {
       { '<leader>sd', '<cmd>Telescope diagnostics<cr>', desc = '[S]earch [D]iagnostics' },
       { '<leader>sr', '<cmd>Telescope resume<cr>', desc = '[S]earch [R]esume' },
       { '<leader>s.', '<cmd>Telescope oldfiles<cr>', desc = '[S]earch Recent Files ("." for repeat)' },
-      { '<leader>sw', '<cmd>Telescope grep_string<cr>', mode = "v", desc = '[S]earch selected [W]ords' },
+      { '<leader>sW', '<cmd>Telescope grep_string<cr>', mode = "v", desc = '[S]earch selected [W]ords' },
       -- FIXME: lsp config
       -- {
       --   "<leader>ss",
