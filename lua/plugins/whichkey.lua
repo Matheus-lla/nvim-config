@@ -14,32 +14,19 @@ return { -- Useful plugin to show you pending keybinds.
             { '<leader>b', group = '[B]uffer', icon = {icon = '', olor = 'orange' }},
             { '<leader>g', group = '[G]it', icon = {icon = '󰊢', color = 'orange'} },
             { "<leader>gh", group = "[G]it [H]unks" },
+            { "<leader>gb", group = "[G]it [B]lame" },
             { '<leader>x', group = '[X] Diagnostics/Quickfix', icon = {icon = '󱖫', color = 'cyan' }},
             { '<leader>u', group = '[U]i', icon = {icon = "󰙵 ", color = "cyan"} },
-            { '<leader><tab>', group = 'Tabs' },
+            { '<leader><tab>', group = '[Tabs]' },
+            { '<leader>ge', group = '[G]it [E]xplore', icon = {icon = " ", color = "orange"} },
+            { '<leader>be', group = '[B]uffer [E]xplore', icon = {icon = " ", color = "orange"} },
+            { '<leader>t', group = '[T]erminal', icon = {icon = "", color = "red"} },
             { "<leader>q", group = "[Q]uit/session" },
             { "[", group = "prev" },
             { "]", group = "next" },
             { "g", group = "goto" },
             { "gs", group = "surround" },
             { "z", group = "fold" },
-            {
-                "<leader>b",
-                group = "buffer",
-                expand = function()
-                    return require("which-key.extras").expand.buf()
-                end,
-            },
-            {
-                "<leader>w",
-                group = "windows",
-                proxy = "<c-w>",
-                expand = function()
-                    return require("which-key.extras").expand.win()
-                end,
-            },
-            -- better descriptions
-            { "gx", desc = "Open with system app" },
             {
                 "<leader>?",
                 function()

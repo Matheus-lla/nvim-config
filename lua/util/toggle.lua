@@ -11,8 +11,6 @@ local M = {}
 
 ---@param toggle lazyvim.Toggle
 function M.wrap(toggle)
-    print('aqui entrou')
-    print(toggle)
   return setmetatable(toggle, {
     __call = function()
       toggle.set(not toggle.get())
@@ -31,7 +29,6 @@ end
 ---@param toggle lazyvim.Toggle
 function M.map(lhs, toggle)
   local t = M.wrap(toggle)
-    print('ok ate aqui toggle')
   LazyVim.safe_keymap_set("n", lhs, function()
     t()
   end, { desc = "Toggle " .. toggle.name })

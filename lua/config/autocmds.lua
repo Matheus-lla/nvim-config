@@ -46,7 +46,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
--- WARNING: Maybe change here if q quits what i dont like
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("close_with_q"),

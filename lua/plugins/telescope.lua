@@ -164,7 +164,6 @@ return {
         defaults = {
           prompt_prefix = " ",
           selection_caret = " ",
-          -- FIXME: 
           -- open files in the first window that is an actual file.
           -- use the current window if no other window is available.
           get_selection_window = function()
@@ -180,8 +179,7 @@ return {
           end,
           mappings = {
             i = {
-              -- ["<c-t>"] = open_with_trouble,
-              -- ["<a-t>"] = open_with_trouble,
+              ["<c-t>"] = open_with_trouble, -- dont liked
               ["<a-i>"] = find_files_no_ignore,
               ["<a-h>"] = find_files_with_hidden,
               ["<C-Down>"] = actions.cycle_history_next,

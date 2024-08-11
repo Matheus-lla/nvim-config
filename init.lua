@@ -4,8 +4,6 @@
 ---                  See `:help lazy.nvim.txt`                  ---
 -------------------------------------------------------------------
 require("config/options")
-require("config/autocmds")
-require("config/keymaps")
 -------------------------------------------------------------------
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -32,3 +30,6 @@ require("lazy").setup({
 })
 
 require("config/init")
+-------------------------------------------------------------------
+require("config/autocmds")
+require("config/keymaps")

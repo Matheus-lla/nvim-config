@@ -31,7 +31,6 @@ return {
                     noremap = true,
                     nowait = true,
                 },
-                -- FIXME: Description for the keymaps
                 mappings = {
                     ["<space>"] = { 
                         "toggle_node",  --[[disable `nowait` if you have existing]]

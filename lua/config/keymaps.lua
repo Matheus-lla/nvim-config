@@ -2,32 +2,10 @@
 ---                        Vim.keymaps                          ---
 ---                 See `:help vim.keymap.set()`                ---
 -------------------------------------------------------------------
--- -- Clear highlights on search when pressing <Esc> in normal mode
--- --  See `:help hlsearch`
--- vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
---
--- -- Diagnostic keymaps
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
---
--- -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
---
--- -- Keybinds to make split navigation easier.
--- --  Use CTRL+<hjkl> to switch between windows
--- --  See `:help wincmd` for a list of all window commands
--- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
---
--- -- save file
--- vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-
--- use `vim.keymap.set` instead
 local map = vim.keymap.set
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -62,7 +40,7 @@ map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
---FIXME: map("n", "<leader>bd", LazyVim.ui.bufremove, { desc = "Delete Buffer" })
+map("n", "<leader>bd", LazyVim.ui.bufremove, { desc = "Delete Buffer" })
 map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
 -- Clear search with <esc>
@@ -93,30 +71,31 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
--- NOTE: --keywordprg
--- map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
+-- NOTE: keywordprg --- verificar se é a mesma coisa do <s-k> lsp do kickstarter 
+map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
 
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- NOTE: -- commenting
--- map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
--- map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
---
--- -- lazy
--- map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
---
--- -- new file
--- map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
--- FIXME: maybe test after lsp
+-- commenting
+map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
+map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
+
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- NOTE: maybe test after lsp
 -- map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 -- map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 --
 -- map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 -- map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
--- FIXME: formatting
+-- NOTE: check after lsp config formatting
 map({ "n", "v" }, "<leader>cf", function()
     LazyVim.format({ force = true })
 end, { desc = "Format" })
@@ -138,21 +117,19 @@ map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- stylua: ignore start
-
--- FIXME: -- toggle options
--- LazyVim.toggle.map("<leader>uf", LazyVim.toggle.format())
--- LazyVim.toggle.map("<leader>uF", LazyVim.toggle.format(true))
--- LazyVim.toggle.map("<leader>us", LazyVim.toggle("spell", { name = "Spelling" }))
--- LazyVim.toggle.map("<leader>uw", LazyVim.toggle("wrap", { name = "Wrap" }))
--- LazyVim.toggle.map("<leader>uL", LazyVim.toggle("relativenumber", { name = "Relative Number" }))
--- LazyVim.toggle.map("<leader>ud", LazyVim.toggle.diagnostics)
--- LazyVim.toggle.map("<leader>ul", LazyVim.toggle.number)
--- LazyVim.toggle.map( "<leader>uc", LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } }))
--- LazyVim.toggle.map("<leader>uT", LazyVim.toggle.treesitter)
--- LazyVim.toggle.map("<leader>ub", LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" }))
--- if vim.lsp.inlay_hint then
---   LazyVim.toggle.map("<leader>uh", LazyVim.toggle.inlay_hints)
--- end
+LazyVim.toggle.map("<leader>uf", LazyVim.toggle.format())
+LazyVim.toggle.map("<leader>uF", LazyVim.toggle.format(true))
+LazyVim.toggle.map("<leader>us", LazyVim.toggle("spell", { name = "Spelling" }))
+LazyVim.toggle.map("<leader>uw", LazyVim.toggle("wrap", { name = "Wrap" }))
+LazyVim.toggle.map("<leader>uL", LazyVim.toggle("relativenumber", { name = "Relative Number" }))
+LazyVim.toggle.map("<leader>ud", LazyVim.toggle.diagnostics)
+LazyVim.toggle.map("<leader>ul", LazyVim.toggle.number)
+LazyVim.toggle.map( "<leader>uc", LazyVim.toggle("conceallevel", { values = { 0, vim.o.conceallevel > 0 and vim.o.conceallevel or 2 } }))
+LazyVim.toggle.map("<leader>uT", LazyVim.toggle.treesitter)
+LazyVim.toggle.map("<leader>ub", LazyVim.toggle("background", { values = { "light", "dark" }, name = "Background" }))
+if vim.lsp.inlay_hint then
+  LazyVim.toggle.map("<leader>uh", LazyVim.toggle.inlay_hints)
+end
 
 -- NOTE: -- lazygit
 -- map("n", "<leader>gg", function() LazyVim.lazygit( { cwd = LazyVim.root.git() }) end, { desc = "Lazygit (Root Dir)" })
@@ -171,16 +148,15 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 -- map("n", "<leader>gL", function()
 --   LazyVim.lazygit({ args = { "log" } })
 -- end, { desc = "Lazygit Log (cwd)" })
+-- NOTE: -- lazygit
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
 
--- FIXME: -- floating terminal
--- local lazyterm = function() LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
--- map("n", "<leader>ft", lazyterm, { desc = "Terminal (Root Dir)" })
--- map("n", "<leader>fT", function() LazyVim.terminal() end, { desc = "Terminal (cwd)" })
--- map("n", "<c-/>", lazyterm, { desc = "Terminal (Root Dir)" })
--- map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+local lazyterm = function() LazyVim.terminal(nil, { cwd = LazyVim.root() }) end
+map("n", "<leader>t", lazyterm, { desc = "[T]erminal (Root Dir)" })
+map("n", "<c-/>", lazyterm, { desc = "Terminal (Root Dir)" })
+map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
@@ -196,7 +172,8 @@ map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
--- FIXME: LazyVim.toggle.map("<leader>wm", LazyVim.toggle.maximize)
+LazyVim.toggle.map("<leader>wm", LazyVim.toggle.maximize)
+LazyVim.toggle.map("<c-m>m", LazyVim.toggle.maximize)
 
 -- tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
