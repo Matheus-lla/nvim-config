@@ -278,12 +278,12 @@ return {
                 },
             },
             vim.cmd([[nnoremap \ :Neotree reveal<cr>]]),
-            vim.keymap.set('n', '<leader>ng', function()
+            vim.keymap.set('n', '<leader>ge', function()
                 vim.cmd('Neotree float git_status')
-            end, { desc = '[N]eotree [G]it status' }),
-            vim.keymap.set('n', '<leader>nb', function()
+            end, { desc = '[G]it [E]xplorer' }),
+            vim.keymap.set('n', '<leader>be', function()
                 vim.cmd('Neotree float buffers')
-            end, { desc = '[N]eotree [B]uffers' }),
+            end, { desc = '[B]uffers [E]xplorer' }),
         },
 
 
