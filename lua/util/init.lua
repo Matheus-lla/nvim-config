@@ -45,11 +45,11 @@ setmetatable(M, {
       local key = type(dep) == "table" and dep[2] or k
       M.deprecate([[LazyVim.]] .. k, [[LazyVim.]] .. mod .. "." .. key)
       ---@diagnostic disable-next-line: no-unknown
-      t[mod] = require("lazyvim.util." .. mod) -- load here to prevent loops
+      t[mod] = require("util." .. mod) -- load here to prevent loops
       return t[mod][key]
     end
     ---@diagnostic disable-next-line: no-unknown
-    t[k] = require("lazyvim.util." .. k)
+    t[k] = require("util." .. k)
     return t[k]
   end,
 })
@@ -78,7 +78,7 @@ end
 
 ---@param extra string
 function M.has_extra(extra)
-  local Config = require("lazyvim.config")
+  local Config = require("config")
   local modname = "lazyvim.plugins.extras." .. extra
   return vim.tbl_contains(require("lazy.core.config").spec.modules, modname)
     or vim.tbl_contains(Config.json.data.extras, modname)
